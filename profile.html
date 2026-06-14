@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | ПластТех</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">ПластТех</div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О компании</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="technologies.html">Технологии</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="#" id="authBtn">Вход / Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">✕</button>
+        <div class="mobile-logo">ПластТех</div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="technologies.html">Технологии</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="#" id="mobileAuthBtn">Вход / Регистрация</a></li>
+        </ul>
+    </div>
+
+    <div class="contact-hero">
+        <h1>Личный кабинет</h1>
+        <p>Ваши заявки и личная информация</p>
+    </div>
+
+    <div class="requests-container">
+        <h2>Мои заявки</h2>
+        <div id="requestsList">
+            <div class="empty-message">Загрузка...</div>
+        </div>
+        <div style="text-align: center;">
+            <button id="logoutBtn" class="logout-btn">Выйти из аккаунта</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>ПластТех</h3>
+            <p>Производство пластиковых деталей</p>
+            <p>ООО "ПластТех"</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Ваш конфиг Firebase (скопирован из index.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNyKo-H1NgYPAX4jUW2ilYjz3uyVUfc70",
+            authDomain: "plastteh-6a4ef.firebaseapp.com",
+            projectId: "plastteh-6a4ef",
+            storageBucket: "plastteh-6a4ef.firebasestorage.app",
+            messagingSenderId: "570756413354",
+            appId: "1:570756413354:web:0766ed1aab836799d79dd3",
+            measurementId: "G-RVV8969W8D"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+                return;
+            }
+            const q = query(collection(db, 'requests'), where('userId', '==', user.uid));
+            const querySnapshot = await getDocs(q);
+            const listContainer = document.getElementById('requestsList');
+            
+            if (querySnapshot.empty) {
+                listContainer.innerHTML = '<div class="empty-message">У вас пока нет отправленных заявок.</div>';
+            } else {
+                let tableHTML = `<table class="requests-table"><thead><tr><th>Дата</th><th>Деталь (описание)</th><th>Статус</th></tr></thead><tbody>`;
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const date = data.createdAt?.toDate().toLocaleDateString('ru-RU') || '—';
+                    const messagePreview = data.message?.substring(0, 60) || '—';
+                    tableHTML += `<tr><td>${date}</td><td>${messagePreview}${data.message?.length > 60 ? '…' : ''}</td><td>Новая</td></tr>`;
+                });
+                tableHTML += `</tbody></table>`;
+                listContainer.innerHTML = tableHTML;
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await signOut(auth);
+            window.location.href = 'index.html';
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

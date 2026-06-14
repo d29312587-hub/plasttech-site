@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | ПластТех</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">ПластТех</div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О компании</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="technologies.html">Технологии</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="#" id="authBtn">Вход / Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">✕</button>
+        <div class="mobile-logo">ПластТех</div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="technologies.html">Технологии</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="#" id="mobileAuthBtn">Вход / Регистрация</a></li>
+        </ul>
+    </div>
+
+    <div class="contact-hero">
+        <h1>Свяжитесь с нами</h1>
+        <p>Будем рады ответить на ваши вопросы</p>
+    </div>
+
+    <section class="contact-section">
+        <div class="contacts-container">
+            <div class="contact-form-card">
+                <h3>Отправить заявку</h3>
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label>Ваше имя *</label>
+                        <input type="text" id="name" placeholder="Иванов Иван">
+                    </div>
+                    <div class="form-group">
+                        <label>Компания</label>
+                        <input type="text" id="company" placeholder="ООО «ПластТех»">
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон *</label>
+                        <input type="tel" id="phone" placeholder="+7 (___) ___-__-__">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="email" placeholder="ivan@example.ru">
+                    </div>
+                    <div class="form-group">
+                        <label>Сообщение *</label>
+                        <textarea id="message" placeholder="укажите, что нужно изготовить, размер и количество"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+                <div class="form-agreement">
+                    <p class="agreement-text">
+                        Нажимая «Отправить», вы даете согласие на обработку персональных данных в соответствии с 
+                        <a href="/confidential" target="_blank">политикой конфиденциальности</a> 
+                        и принимаете условия 
+                        <a href="/terms" target="_blank">пользовательского соглашения</a>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-info-card">
+                <h3>Контактная информация</h3>
+                <div class="contact-detail">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Телефон</strong>
+                        <span>+7 (351) 485-68-77</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <span>info@plasttech.ru</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Адрес</strong>
+                        <span>г. Челябинск, ул. Комсомольская, д. 13Б</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Режим работы</strong>
+                        <span>Пн-Пт: 9:00 - 18:00</span>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A40c97842cafd4701c0837ca75bced2405aae12e83847950c4e99f9678d0d4555&amp;width=100%25&amp;height=250&amp;lang=ru_RU&amp;scroll=true" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>ПластТех</h3>
+            <p>Производство пластиковых деталей</p>
+            <p>ООО "ПластТех"</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно и Firebase  -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeAuthModal()">&times;</span>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Вход</button>
+        <button class="auth-tab" data-tab="register">Регистрация</button>
+      </div>
+      <div id="loginForm" class="auth-form active">
+        <input type="email" id="loginEmail" placeholder="Email" autocomplete="email">
+        <div id="loginEmailHint" class="field-hint"></div>
+        <input type="password" id="loginPassword" placeholder="Пароль">
+        <button id="loginBtn">Войти</button>
+        <div id="loginError" class="auth-error"></div>
+      </div>
+      <div id="registerForm" class="auth-form">
+        <input type="text" id="regName" placeholder="Имя">
+        <div id="regNameHint" class="field-hint"></div>
+        
+        <input type="email" id="regEmail" placeholder="Email" autocomplete="email">
+        <div id="regEmailHint" class="field-hint"></div>
+        
+        <input type="password" id="regPassword" placeholder="Пароль (мин. 6 символов)">
+        <div id="regPasswordHint" class="field-hint"></div>
+        
+        <button id="registerBtn">Зарегистрироваться</button>
+        <div id="regError" class="auth-error"></div>
+    </div>
+    </div>
+  </div>
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyDNyKo-H1NgYPAX4jUW2ilYjz3uyVUfc70",
+      authDomain: "plastteh-6a4ef.firebaseapp.com",
+      projectId: "plastteh-6a4ef",
+      storageBucket: "plastteh-6a4ef.firebasestorage.app",
+      messagingSenderId: "570756413354",
+      appId: "1:570756413354:web:0766ed1aab836799d79dd3",
+      measurementId: "G-RVV8969W8D"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    window.auth = auth;
+    window.db = db;
+  
+    // Вспомогательные функции проверки
+    const isValidEmailSimple = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const isValidName = (name) => name.trim().length >= 2;
+    const isValidPassword = (pwd) => pwd.length >= 6;
+  
+    // Функция показа подсказки
+    const showHint = (input, hintId, isValid, validMessage = "✓", invalidMessage) => {
+      const hintEl = document.getElementById(hintId);
+      if (!hintEl) return;
+      const val = input.value.trim();
+      if (val === "") {
+        hintEl.textContent = "";
+        return;
+      }
+      if (isValid) {
+        hintEl.textContent = validMessage;
+        hintEl.style.color = "#27ae60";
+      } else {
+        hintEl.textContent = invalidMessage;
+        hintEl.style.color = "#e74c3c";
+      }
+    };
+  
+    // Ждём загрузки DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      // Функции открытия/закрытия модального окна
+      window.openAuthModal = () => {
+        const modal = document.getElementById('authModal');
+        if (modal) modal.classList.add('active');
+      };
+      window.closeAuthModal = () => {
+        const modal = document.getElementById('authModal');
+        if (modal) modal.classList.remove('active');
+      };
+  
+      // Кнопки входа в меню
+      const authBtn = document.getElementById('authBtn');
+      const mobileAuthBtn = document.getElementById('mobileAuthBtn');
+      if (authBtn) authBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal(); };
+      if (mobileAuthBtn) mobileAuthBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal(); };
+  
+      // Переключение вкладок
+      const modal = document.getElementById('authModal');
+      if (modal) {
+        const tabs = modal.querySelectorAll('.auth-tab');
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const isLogin = tab.dataset.tab === 'login';
+            document.getElementById('loginForm').classList.toggle('active', isLogin);
+            document.getElementById('registerForm').classList.toggle('active', !isLogin);
+          });
+        });
+      }
+  
+      // === ПОДСКАЗКИ ДЛЯ ФОРМЫ РЕГИСТРАЦИИ ===
+      const regName = document.getElementById('regName');
+      const regEmail = document.getElementById('regEmail');
+      const regPassword = document.getElementById('regPassword');
+  
+      if (regName) {
+        regName.addEventListener('input', () => {
+          const isValid = isValidName(regName.value);
+          showHint(regName, 'regNameHint', isValid, "✓", "Минимум 2 символа");
+        });
+      }
+  
+      if (regEmail) {
+        regEmail.addEventListener('input', () => {
+          const isValid = isValidEmailSimple(regEmail.value);
+          showHint(regEmail, 'regEmailHint', isValid, "✓", "Пример: name@domain.ru");
+        });
+      }
+  
+      if (regPassword) {
+        regPassword.addEventListener('input', () => {
+          const isValid = isValidPassword(regPassword.value);
+          showHint(regPassword, 'regPasswordHint', isValid, "✓", "Минимум 6 символов");
+        });
+      }
+  
+      // === ПОДСКАЗКИ ДЛЯ ФОРМЫ ВХОДА ===
+      const loginEmail = document.getElementById('loginEmail');
+      const loginPassword = document.getElementById('loginPassword');
+  
+      if (loginEmail) {
+        loginEmail.addEventListener('input', () => {
+          const isValid = isValidEmailSimple(loginEmail.value);
+          showHint(loginEmail, 'loginEmailHint', isValid, "✓", "Пример: name@domain.ru");
+        });
+      }
+  
+      // === ЛОГИН ===
+      const loginBtn = document.getElementById('loginBtn');
+      if (loginBtn) {
+        loginBtn.addEventListener('click', async () => {
+          const email = document.getElementById('loginEmail').value.trim();
+          const pwd = document.getElementById('loginPassword').value;
+          const errorDiv = document.getElementById('loginError');
+          if (!isValidEmailSimple(email)) {
+            errorDiv.innerText = 'Введите корректный email (например, name@domain.ru)';
+            return;
+          }
+          try {
+            await signInWithEmailAndPassword(auth, email, pwd);
+            window.closeAuthModal();
+            window.location.reload();
+          } catch (err) {
+            errorDiv.innerText = err.message;
+          }
+        });
+      }
+  
+      // === РЕГИСТРАЦИЯ ===
+      const registerBtn = document.getElementById('registerBtn');
+      if (registerBtn) {
+        registerBtn.addEventListener('click', async () => {
+          const name = document.getElementById('regName').value.trim();
+          const email = document.getElementById('regEmail').value.trim();
+          const pwd = document.getElementById('regPassword').value;
+          const errorDiv = document.getElementById('regError');
+          
+          if (!isValidName(name)) {
+            errorDiv.innerText = 'Имя должно содержать минимум 2 символа';
+            return;
+          }
+          if (!isValidEmailSimple(email)) {
+            errorDiv.innerText = 'Введите корректный email (например, name@domain.ru)';
+            return;
+          }
+          if (!isValidPassword(pwd)) {
+            errorDiv.innerText = 'Пароль не менее 6 символов';
+            return;
+          }
+          try {
+            const userCred = await createUserWithEmailAndPassword(auth, email, pwd);
+            await addDoc(collection(db, 'users'), { uid: userCred.user.uid, name, email });
+            window.closeAuthModal();
+            window.location.reload();
+          } catch (err) {
+            errorDiv.innerText = err.message;
+          }
+        });
+      }
+    });
+  
+    // Обновление кнопки в меню
+    onAuthStateChanged(auth, (user) => {
+      const authBtn = document.getElementById('authBtn');
+      const mobileAuthBtn = document.getElementById('mobileAuthBtn');
+      if (user) {
+        const text = 'Личный кабинет';
+        if (authBtn) { authBtn.textContent = text; authBtn.onclick = (e) => { e.preventDefault(); window.location.href = 'profile.html'; }; }
+        if (mobileAuthBtn) { mobileAuthBtn.textContent = text; mobileAuthBtn.onclick = (e) => { e.preventDefault(); window.location.href = 'profile.html'; }; }
+      } else {
+        const text = 'Вход / Регистрация';
+        if (authBtn) { authBtn.textContent = text; authBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal?.(); }; }
+        if (mobileAuthBtn) { mobileAuthBtn.textContent = text; mobileAuthBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal?.(); }; }
+      }
+    });
+  </script>
+  
+  <style>
+
+    .field-hint {
+      font-size: 12px;
+      margin-top: -5px;
+      margin-bottom: 10px;
+      padding-left: 5px;
+      transition: all 0.2s;
+    }
+  </style>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Технологии | ПластТех</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .tech-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://static.vecteezy.com/system/resources/previews/039/350/257/non_2x/panoramic-industrial-silhouette-oil-industry-factory-buildings-refinery-complex-with-pipes-and-tanks-landscape-background-illustration-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            margin-top: -75px;
+            padding-top: calc(100px + 75px);
+        }
+        .tech-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .tech-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .tech-section {
+            padding: 60px 0;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .tech-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .tech-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .tech-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  
+            transition: transform 0.3s ease;
+        }
+        .tech-card:hover .tech-card-image img {
+            transform: scale(1.05);  /* эффект увеличения при наведении */
+        }
+        .tech-card-content {
+            padding: 25px;
+        }
+        .tech-card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .tech-card-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .tech-badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .bg-light {
+            background: #f8f9fa;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) {
+            .tech-hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">ПластТех</div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О компании</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="technologies.html">Технологии</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="#" id="authBtn">Вход / Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">✕</button>
+        <div class="mobile-logo">ПластТех</div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="technologies.html">Технологии</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="#" id="mobileAuthBtn">Вход / Регистрация</a></li>
+        </ul>
+    </div>
+
+    <div class="tech-hero">
+        <h1>Технологии и материалы</h1>
+        <p>Современное оборудование и качественное сырьё</p>
+    </div>
+
+    <!-- ОБОРУДОВАНИЕ -->
+    <section class="tech-section">
+        <h2 class="section-title">Наше оборудование</h2>
+        <div class="tech-grid">
+            <!-- Термопластавтоматы -->
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://pressmash.ru/wp-content/uploads/2025/12/hd290l-czngshhev1-645x430.png" alt="Термопластавтомат">
+                    
+                </div>
+                <div class="tech-card-content">
+                    <h3>Термопластавтоматы</h3>
+                    <p>15 машин усилием от 60 до 500 тонн. Производство деталей любых габаритов.</p>
+                    <span class="tech-badge">До 5 кг</span>
+                </div>
+            </div>
+
+            <!-- Обрабатывающие центры с ЧПУ -->
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://amur-stan.ru/upload/iblock/a30/ddeei11zjg3xzrzsm3iubafiu3e1vonv/vertikalnyy_obrabatyvayushchiy_tsentr_s_chpu_dn_solutions_mynx_5450.png" alt="Обрабатывающий центр с ЧПУ">
+                    
+                </div>
+                <div class="tech-card-content">
+                    <h3>Обрабатывающие центры с ЧПУ</h3>
+                    <p>Изготовление пресс-форм и оснастки с высокой точностью.</p>
+                    <span class="tech-badge">Точность 0.005 мм</span>
+                </div>
+            </div>
+
+            <!-- 3D-принтеры -->
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://lider-3d.ru/upload/iblock/08f/08fed520dc63f94490b5ec38aa2306ae.jpg" alt="3D-принтер">
+                   
+                </div>
+                <div class="tech-card-content">
+                    <h3>3D-принтеры</h3>
+                    <p>Быстрое прототипирование, печать образцов и малых серий.</p>
+                    <span class="tech-badge">FDM, SLA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МАТЕРИАЛЫ -->
+    <section class="tech-section bg-light">
+        <h2 class="section-title">Материалы</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://planeta3d.ru/wa-data/public/shop/products/57/11/11157/images/40716/abs-plastik-bestfilament-natural.750x0.jpg" alt="ABS пластик">
+                </div>
+                <div class="tech-card-content">
+                    <h3>ABS-пластик</h3>
+                    <p>Ударопрочный, термостойкий. Для корпусов, деталей интерьера.</p>
+                    <span class="tech-badge">Сертифицирован</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://image.made-in-china.com/2f0j00qATboQOPYUca/Polyethylene-Resin-Plastic-PP-Homopolymer-Copolymer.jpg" alt="Полипропилен">
+                </div>
+                <div class="tech-card-content">
+                    <h3>Полипропилен (PP)</h3>
+                    <p>Химически стойкий, гибкий. Для емкостей, труб, авто-деталей.</p>
+                    <span class="tech-badge">Пищевой</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://avatars.mds.yandex.net/i?id=4442db2808705d9ff8d0813d40b80519_l-17636413-images-thumbs&n=13" alt="Поликарбонат">
+                </div>
+                <div class="tech-card-content">
+                    <h3>Поликарбонат (PC)</h3>
+                    <p>Высокая прочность, прозрачность. Для оптики, защитных экранов.</p>
+                    <span class="tech-badge">Ударопрочный</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <div class="tech-card-image">
+                    <img src="https://materikrti.ru/image/cache/1800-800/data/prod/poliacetal-plastina-materikrti.jpg" alt="POM">
+                </div>
+                <div class="tech-card-content">
+                    <h3>POM (полиоксиметилен)</h3>
+                    <p>Низкое трение, высокая износостойкость. Для шестерней, втулок.</p>
+                    <span class="tech-badge">Износостойкий</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>ПластТех</h3>
+            <p>Производство пластиковых деталей</p>
+            <p>ООО "ПластТех"</p>
+        </div>
+    </footer>
+
+     <!-- Модальное окно и Firebase -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeAuthModal()">&times;</span>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Вход</button>
+        <button class="auth-tab" data-tab="register">Регистрация</button>
+      </div>
+      <div id="loginForm" class="auth-form active">
+        <input type="email" id="loginEmail" placeholder="Email" autocomplete="email">
+        <div id="loginEmailHint" class="field-hint"></div>
+        <input type="password" id="loginPassword" placeholder="Пароль">
+        <button id="loginBtn">Войти</button>
+        <div id="loginError" class="auth-error"></div>
+      </div>
+      <div id="registerForm" class="auth-form">
+        <input type="text" id="regName" placeholder="Имя">
+        <div id="regNameHint" class="field-hint"></div>
+        
+        <input type="email" id="regEmail" placeholder="Email" autocomplete="email">
+        <div id="regEmailHint" class="field-hint"></div>
+        
+        <input type="password" id="regPassword" placeholder="Пароль (мин. 6 символов)">
+        <div id="regPasswordHint" class="field-hint"></div>
+        
+        <button id="registerBtn">Зарегистрироваться</button>
+        <div id="regError" class="auth-error"></div>
+    </div>
+    </div>
+  </div>
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyDNyKo-H1NgYPAX4jUW2ilYjz3uyVUfc70",
+      authDomain: "plastteh-6a4ef.firebaseapp.com",
+      projectId: "plastteh-6a4ef",
+      storageBucket: "plastteh-6a4ef.firebasestorage.app",
+      messagingSenderId: "570756413354",
+      appId: "1:570756413354:web:0766ed1aab836799d79dd3",
+      measurementId: "G-RVV8969W8D"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    window.auth = auth;
+    window.db = db;
+  
+    // Вспомогательные функции проверки
+    const isValidEmailSimple = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const isValidName = (name) => name.trim().length >= 2;
+    const isValidPassword = (pwd) => pwd.length >= 6;
+  
+    // Функция показа подсказки
+    const showHint = (input, hintId, isValid, validMessage = "✓", invalidMessage) => {
+      const hintEl = document.getElementById(hintId);
+      if (!hintEl) return;
+      const val = input.value.trim();
+      if (val === "") {
+        hintEl.textContent = "";
+        return;
+      }
+      if (isValid) {
+        hintEl.textContent = validMessage;
+        hintEl.style.color = "#27ae60";
+      } else {
+        hintEl.textContent = invalidMessage;
+        hintEl.style.color = "#e74c3c";
+      }
+    };
+  
+    // Ждём загрузки DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      // Функции открытия/закрытия модального окна
+      window.openAuthModal = () => {
+        const modal = document.getElementById('authModal');
+        if (modal) modal.classList.add('active');
+      };
+      window.closeAuthModal = () => {
+        const modal = document.getElementById('authModal');
+        if (modal) modal.classList.remove('active');
+      };
+  
+      // Кнопки входа в меню
+      const authBtn = document.getElementById('authBtn');
+      const mobileAuthBtn = document.getElementById('mobileAuthBtn');
+      if (authBtn) authBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal(); };
+      if (mobileAuthBtn) mobileAuthBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal(); };
+  
+      // Переключение вкладок
+      const modal = document.getElementById('authModal');
+      if (modal) {
+        const tabs = modal.querySelectorAll('.auth-tab');
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const isLogin = tab.dataset.tab === 'login';
+            document.getElementById('loginForm').classList.toggle('active', isLogin);
+            document.getElementById('registerForm').classList.toggle('active', !isLogin);
+          });
+        });
+      }
+  
+      // === ПОДСКАЗКИ ДЛЯ ФОРМЫ РЕГИСТРАЦИИ ===
+      const regName = document.getElementById('regName');
+      const regEmail = document.getElementById('regEmail');
+      const regPassword = document.getElementById('regPassword');
+  
+      if (regName) {
+        regName.addEventListener('input', () => {
+          const isValid = isValidName(regName.value);
+          showHint(regName, 'regNameHint', isValid, "✓", "Минимум 2 символа");
+        });
+      }
+  
+      if (regEmail) {
+        regEmail.addEventListener('input', () => {
+          const isValid = isValidEmailSimple(regEmail.value);
+          showHint(regEmail, 'regEmailHint', isValid, "✓", "Пример: name@domain.ru");
+        });
+      }
+  
+      if (regPassword) {
+        regPassword.addEventListener('input', () => {
+          const isValid = isValidPassword(regPassword.value);
+          showHint(regPassword, 'regPasswordHint', isValid, "✓", "Минимум 6 символов");
+        });
+      }
+  
+      // === ПОДСКАЗКИ ДЛЯ ФОРМЫ ВХОДА ===
+      const loginEmail = document.getElementById('loginEmail');
+      const loginPassword = document.getElementById('loginPassword');
+  
+      if (loginEmail) {
+        loginEmail.addEventListener('input', () => {
+          const isValid = isValidEmailSimple(loginEmail.value);
+          showHint(loginEmail, 'loginEmailHint', isValid, "✓", "Пример: name@domain.ru");
+        });
+      }
+  
+      // === ЛОГИН ===
+      const loginBtn = document.getElementById('loginBtn');
+      if (loginBtn) {
+        loginBtn.addEventListener('click', async () => {
+          const email = document.getElementById('loginEmail').value.trim();
+          const pwd = document.getElementById('loginPassword').value;
+          const errorDiv = document.getElementById('loginError');
+          if (!isValidEmailSimple(email)) {
+            errorDiv.innerText = 'Введите корректный email (например, name@domain.ru)';
+            return;
+          }
+          try {
+            await signInWithEmailAndPassword(auth, email, pwd);
+            window.closeAuthModal();
+            window.location.reload();
+          } catch (err) {
+            errorDiv.innerText = err.message;
+          }
+        });
+      }
+  
+      // === РЕГИСТРАЦИЯ ===
+      const registerBtn = document.getElementById('registerBtn');
+      if (registerBtn) {
+        registerBtn.addEventListener('click', async () => {
+          const name = document.getElementById('regName').value.trim();
+          const email = document.getElementById('regEmail').value.trim();
+          const pwd = document.getElementById('regPassword').value;
+          const errorDiv = document.getElementById('regError');
+          
+          if (!isValidName(name)) {
+            errorDiv.innerText = 'Имя должно содержать минимум 2 символа';
+            return;
+          }
+          if (!isValidEmailSimple(email)) {
+            errorDiv.innerText = 'Введите корректный email (например, name@domain.ru)';
+            return;
+          }
+          if (!isValidPassword(pwd)) {
+            errorDiv.innerText = 'Пароль не менее 6 символов';
+            return;
+          }
+          try {
+            const userCred = await createUserWithEmailAndPassword(auth, email, pwd);
+            await addDoc(collection(db, 'users'), { uid: userCred.user.uid, name, email });
+            window.closeAuthModal();
+            window.location.reload();
+          } catch (err) {
+            errorDiv.innerText = err.message;
+          }
+        });
+      }
+    });
+  
+    // Обновление кнопки в меню
+    onAuthStateChanged(auth, (user) => {
+      const authBtn = document.getElementById('authBtn');
+      const mobileAuthBtn = document.getElementById('mobileAuthBtn');
+      if (user) {
+        const text = 'Личный кабинет';
+        if (authBtn) { authBtn.textContent = text; authBtn.onclick = (e) => { e.preventDefault(); window.location.href = 'profile.html'; }; }
+        if (mobileAuthBtn) { mobileAuthBtn.textContent = text; mobileAuthBtn.onclick = (e) => { e.preventDefault(); window.location.href = 'profile.html'; }; }
+      } else {
+        const text = 'Вход / Регистрация';
+        if (authBtn) { authBtn.textContent = text; authBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal?.(); }; }
+        if (mobileAuthBtn) { mobileAuthBtn.textContent = text; mobileAuthBtn.onclick = (e) => { e.preventDefault(); window.openAuthModal?.(); }; }
+      }
+    });
+  </script>
+  
+  <style>
+    .field-hint {
+      font-size: 12px;
+      margin-top: -5px;
+      margin-bottom: 10px;
+      padding-left: 5px;
+      transition: all 0.2s;
+    }
+  </style>
+
+    <script src="script.js"></script>
+</body>
+</html>
